@@ -13,63 +13,59 @@ class TransactionList extends StatelessWidget {
         height: 1000,
         child: transactions.isEmpty
             ? Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 300.0,
-                  ),
-                  Container(
-                    height: 200,
-                    width: 200,
-                    child: Image.asset(
-                      'assets/images/waiting.png',
-                    ),
-                  ),
-                ],
-              )
+          children: <Widget>[
+            SizedBox(
+              height: 300.0,
+            ),
+            Container(
+              height: 200,
+              width: 200,
+              child: Image.asset(
+                'assets/images/waiting.png',
+              ),
+            ),
+          ],
+        )
             : ListView.builder(
-                itemBuilder: (tx, index) {
-                  return Card(
-                      elevation: 5.0,
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.all(15.0),
-                            child: Text(
-                              '\$${transactions[index].amount.toStringAsFixed(2)}',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17.0,
+          itemBuilder: (tx, index) {
+            return Card(
+              elevation: 6,
+              margin: EdgeInsets.symmetric(vertical:6.0,horizontal: 25.0),
+              child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 30.0,
+                    backgroundColor: Colors.grey,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: FittedBox(
+                        child: Text(
+                            '\$${transactions[index].amount.toStringAsFixed(2)}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25.0,
 //                          color: Colors.purpleAccent,
-                                color: Theme.of(context).primaryColorDark,
-                              ),
-                            ),
-                            margin: EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 15),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-//                          color: Colors.black,
-                                width: 2.0,
-                              ),
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                transactions[index].title,
-                                style: Theme.of(context).textTheme.headline6,
-                              ),
-                              Text(
-                                DateFormat.yMMMMd()
-                                    .format(transactions[index].date),
-                                style: TextStyle(color: Colors.green),
-                              )
-                            ],
-                          ),
-                        ],
-                      ));
-                },
-                itemCount: transactions.length,
-              ));
+                              color: Theme
+                                  .of(context)
+                                  .primaryColorDark,
+                            )),
+                      ),
+                    )),
+                    title: Text(
+                      transactions[index].title,
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .headline6,
+                    ),
+                    subtitle: Text(
+                      DateFormat.yMMMMd().format(transactions[index].date),
+                      style: TextStyle(color: Colors.green),
+                    ),
+                trailing: Icon(Icons.restore_from_trash),
+                  ),
+            );
+          },
+          itemCount: transactions.length,
+        ));
   }
 }
