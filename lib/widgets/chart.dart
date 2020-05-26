@@ -36,7 +36,6 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(groupedTransactionsValue);
     return Card(
       color: Colors.white,
       margin: EdgeInsets.all(25.0),
