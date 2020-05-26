@@ -1,3 +1,2 @@
 # personal_expenses
-
-![Alt text](screenshoot/androidScreenShoot.png?raw=true "android screenshoot")
+<a href="url"><img src="screenshoot/androidScreenShoot.png" align="center" height="630" width="350" ></a>
