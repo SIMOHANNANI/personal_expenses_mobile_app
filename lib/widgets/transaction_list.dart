@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   final Function _deleteTransaction;
-
   TransactionList(this.transactions, this._deleteTransaction);
 
   @override
