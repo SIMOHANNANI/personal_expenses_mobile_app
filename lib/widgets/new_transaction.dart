@@ -18,70 +18,76 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 10.0,
+    return SingleChildScrollView(
       child: Container(
-        padding: EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Title',
-                border: OutlineInputBorder(),
-              ),
-              controller: titleController,
-            ),
-            Container(
-              height: 10.0,
-            ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Amount',
-                border: OutlineInputBorder(),
-              ),
-              controller: amountController,
-              keyboardType: TextInputType.number,
-              onSubmitted: (value) => _submitData,
-            ),
-            Container(
-              height: 70.0,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      _pickedDate == null
-                          ? 'No Date chosen!'
-                          : "You just picked : ${DateFormat.yMd().format(_pickedDate)}",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
-                    ),
+        color: Theme.of(context).primaryColorLight,
+        child: Card(
+          color:Colors.transparent,
+          elevation: 0.0,
+          child: Container(
+            padding: EdgeInsets.only(top:100.0,bottom:MediaQuery.of(context).viewInsets.bottom + 70 ,left:100.0,right:100.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Title',
+                    border: OutlineInputBorder(),
                   ),
-                  FlatButton(
-                    child: Text(
-                      'choose a date',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                  controller: titleController,
+                ),
+                Container(
+                  height: 10.0,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Amount',
+                    border: OutlineInputBorder(),
+                  ),
+                  controller: amountController,
+                  keyboardType: TextInputType.number,
+                  onSubmitted: (value) => _submitData,
+                ),
+                Container(
+                  height: 70.0,
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Text(
+                          _pickedDate == null
+                              ? 'No Date chosen!'
+                              : "You just picked : ${DateFormat.yMd().format(_pickedDate)}",
+                          style:
+                              TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
+                        ),
                       ),
-                    ),
-                    onPressed: _presentDatePicker,
-                    textColor: Theme.of(context).primaryColor,
+                      FlatButton(
+                        child: Text(
+                          'choose a date',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: _presentDatePicker,
+                        textColor: Theme.of(context).primaryColor,
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                FlatButton(
+                  child: Text(
+                    'Save transaction',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.0,
+                        color: Colors.black),
+                  ),
+                  color: Theme.of(context).primaryColor,
+                  onPressed: _submitData,
+                ),
+              ],
             ),
-            FlatButton(
-              child: Text(
-                'Save transaction',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
-                    color: Colors.black),
-              ),
-              color: Theme.of(context).primaryColor,
-              onPressed: _submitData,
-            ),
-          ],
+          ),
         ),
       ),
     );
